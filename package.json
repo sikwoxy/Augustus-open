@@ -1,0 +1,15 @@
+{
+  "name": "augustus",
+  "private": true,
+  "description": "Augustus monorepo",
+  "packageManager": "pnpm@10.20.0",
+  "scripts": {
+    "build": "pnpm -r --sort --if-present run build",
+    "typecheck": "pnpm --filter @augustus/core build && pnpm -r --sort --if-present run typecheck",
+    "lint": "pnpm --filter web lint",
+    "dev:backend": "pnpm --filter @augustus/backend serve",
+    "dev:web": "pnpm --filter web dev",
+    "smoke": "pnpm --filter @augustus/backend smoke",
+    "pack:core": "pnpm --filter @augustus/core build && pnpm --filter @augustus/core pack"
+  }
+}

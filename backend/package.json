@@ -1,0 +1,28 @@
+{
+  "name": "@augustus/backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Augustus HTTP backend server",
+  "scripts": {
+    "dev": "ts-node src/cli.ts serve",
+    "serve": "ts-node src/cli.ts serve",
+    "doctor": "ts-node src/cli.ts doctor",
+    "smoke": "ts-node src/cli.ts smoke",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@augustus/core": "workspace:*",
+    "@fastify/cors": "^11.2.0",
+    "@fastify/multipart": "^10.0.0",
+    "@larksuiteoapi/node-sdk": "^1.64.0",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.8.5",
+    "uuid": "^14.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "@types/uuid": "^10.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.0"
+  }
+}

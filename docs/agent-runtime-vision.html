@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Augustus Agent Runtime Vision</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #1f2933;
+        --muted: #5d6875;
+        --line: #d6dde6;
+        --paper: #f7f8fa;
+        --panel: #ffffff;
+        --blue: #1e6b8f;
+        --green: #3f7d58;
+        --red: #a34f43;
+        --gold: #936b2f;
+        --violet: #62568f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.55;
+      }
+
+      main {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        padding: 48px 0 28px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 920px;
+        font-size: 46px;
+        line-height: 1.05;
+        font-weight: 760;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 18px;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin-bottom: 6px;
+      }
+
+      .lead {
+        max-width: 840px;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .section {
+        padding: 34px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .grid.four {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .grid.three {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .tile,
+      .node {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        min-height: 124px;
+      }
+
+      .tile p,
+      .node p,
+      .caption {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .tag {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: #ffffff;
+        background: var(--blue);
+        border-radius: 999px;
+        padding: 3px 9px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .tag.green {
+        background: var(--green);
+      }
+
+      .tag.red {
+        background: var(--red);
+      }
+
+      .tag.gold {
+        background: var(--gold);
+      }
+
+      .tag.violet {
+        background: var(--violet);
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: 1fr 46px 1.1fr 46px 1.6fr 46px 1fr;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      .arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 24px;
+      }
+
+      .task {
+        border: 2px solid var(--blue);
+      }
+
+      .runtime {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .runtime .node {
+        min-height: 92px;
+        padding: 12px;
+      }
+
+      .rail {
+        display: grid;
+        grid-template-columns: 180px 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .rail-title {
+        color: var(--muted);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+
+      .list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .list div {
+        background: var(--panel);
+        border-left: 4px solid var(--blue);
+        border-radius: 6px;
+        padding: 12px 14px;
+      }
+
+      .bilingual {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .bilingual p {
+        color: var(--muted);
+      }
+
+      footer {
+        padding: 28px 0 44px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 920px) {
+        h1 {
+          font-size: 34px;
+        }
+
+        .grid.four,
+        .grid.three,
+        .bilingual {
+          grid-template-columns: 1fr;
+        }
+
+        .flow {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .arrow {
+          transform: rotate(90deg);
+          min-height: 28px;
+        }
+
+        .rail {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Agent runtime as the next product layer</h1>
+        <p class="lead">
+          Harnesses constrain agents so they can act. Augustus explores what
+          comes next: a task-first runtime that turns fragmented human work into
+          planned, delegated, remembered, and verifiable outcomes.
+        </p>
+      </header>
+
+      <section class="section bilingual">
+        <div>
+          <h2>The product thesis</h2>
+          <p>
+            Everyone will eventually have an agent runtime. It will not be just
+            a chat window or a tool loop. It will be the durable layer that
+            knows the user's tasks, context, permissions, memories, skills, and
+            unfinished work.
+          </p>
+        </div>
+        <div>
+          <h2>产品判断</h2>
+          <p>
+            未来每个人都会有自己的 agent runtime。它不只是聊天窗口，也不只是
+            tool loop，而是承载任务、上下文、权限、记忆、技能和未完成工作的持久层。
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>From fragments to durable tasks</h2>
+        <div class="flow">
+          <div class="tile">
+            <span class="tag red">Fragments</span>
+            <h3>Messages, files, bugs, notes</h3>
+            <p>Daily work arrives as small, scattered pieces.</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="tile task">
+            <span class="tag">Task</span>
+            <h3>The highest-level product object</h3>
+            <p>Each task carries goal, context, decisions, files, runs, and verification.</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="tile">
+            <span class="tag green">Runtime</span>
+            <div class="runtime">
+              <div class="node">
+                <h3>Planning</h3>
+                <p>Break goals into executable steps.</p>
+              </div>
+              <div class="node">
+                <h3>Agents</h3>
+                <p>Delegate to coder, researcher, writer, and future roles.</p>
+              </div>
+              <div class="node">
+                <h3>Memory</h3>
+                <p>Select, remember, forget, and restore context.</p>
+              </div>
+              <div class="node">
+                <h3>Experience</h3>
+                <p>Turn tool audit into reusable skills and patterns.</p>
+              </div>
+            </div>
+          </div>
+          <div class="arrow">→</div>
+          <div class="tile">
+            <span class="tag gold">Outcome</span>
+            <h3>Visible and verifiable work</h3>
+            <p>Users see process, permissions, validation, and what remains uncertain.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Augustus architecture</h2>
+        <div class="grid three">
+          <div class="tile">
+            <span class="tag">core</span>
+            <h3>@augustus/core</h3>
+            <p>
+              Runtime, task orchestration, LLM loop, agents, tools, memory,
+              grants, audit, experience, and API contract types.
+            </p>
+          </div>
+          <div class="tile">
+            <span class="tag green">backend</span>
+            <h3>@augustus/backend</h3>
+            <p>
+              Fastify adapter, request IDs, file APIs, status APIs, channel
+              integration, serve, doctor, and smoke commands.
+            </p>
+          </div>
+          <div class="tile">
+            <span class="tag violet">web</span>
+            <h3>Next.js interface</h3>
+            <p>
+              Chat workspace, tasks, status, diagnostics, and future real-time
+              runtime event visualization.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Runtime responsibilities</h2>
+        <div class="grid four">
+          <div class="tile">
+            <h3>Goal planning</h3>
+            <p>Tasks turn intent into scoped, resumable plans.</p>
+          </div>
+          <div class="tile">
+            <h3>Multi-agent scheduling</h3>
+            <p>Main agents delegate work without losing task context.</p>
+          </div>
+          <div class="tile">
+            <h3>Memory and forgetting</h3>
+            <p>Useful context is preserved; stale context must be pruned.</p>
+          </div>
+          <div class="tile">
+            <h3>Skills and experience</h3>
+            <p>Repeated tool behavior becomes reusable operational knowledge.</p>
+          </div>
+          <div class="tile">
+            <h3>Permissions</h3>
+            <p>Workspace access and shell execution remain explicit and auditable.</p>
+          </div>
+          <div class="tile">
+            <h3>Tool calls</h3>
+            <p>Tool loops become observable runtime events, not hidden traces.</p>
+          </div>
+          <div class="tile">
+            <h3>Verification</h3>
+            <p>Results include what was checked, what failed, and what remains risky.</p>
+          </div>
+          <div class="tile">
+            <h3>Recovery</h3>
+            <p>Work can pause, resume, and continue across channels.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Future product shape</h2>
+        <div class="rail">
+          <div class="rail-title">Channels</div>
+          <div class="list">
+            <div>CLI for process-heavy developer work</div>
+            <div>Web for task inspection, status, diagnostics, and review</div>
+            <div>Messaging channels for lightweight capture and continuation</div>
+          </div>
+        </div>
+        <div class="rail" style="margin-top: 16px">
+          <div class="rail-title">Runtime</div>
+          <div class="list">
+            <div>One task graph across channels</div>
+            <div>One event stream for agent, tool, permission, and verification steps</div>
+            <div>One memory and experience layer that improves over time</div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        Augustus is a long-term exploration of task-first agent runtime as a
+        product and infrastructure category.
+      </footer>
+    </main>
+  </body>
+</html>

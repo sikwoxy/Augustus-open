@@ -10,6 +10,8 @@ Augustus treats **Task** as the highest-level product concept. Human work is fra
 
 The project is a long-term exploration of that architecture.
 
+online demo: http://110.40.177.242/chat
+
 ## Vision
 
 Augustus explores a runtime layer for personal and team agents:
